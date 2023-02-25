@@ -1,0 +1,11 @@
+n = 0: 20;
+num = [1 1];
+den = [1 -1/2];
+x = ((.5).^n).*sin(n);
+y = filter(num, den, x);
+subplot (2, 1, 1), stem(n, x), ylabel('Input');
+zeroline = zeros(1, length(n));
+hold on; plot(n,zeroline);hold off;
+subplot (2, 1, 2), stem(n, y), ylabel('Matlab output');
+hold on; plot(n,zeroline);hold off;
+xlabel ('n');

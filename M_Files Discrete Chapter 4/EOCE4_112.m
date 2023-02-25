@@ -1,0 +1,20 @@
+num = [1 0];
+den = [1 -.7];
+[H, theta] = freqz(num, den, 200, 'whole');
+mag_H = abs (H);
+angle_H = angle(H);
+% Next we will generate an impulse input of length 20 ximp = [1 zeros(1, 19)];
+% Next we generate a step input of length 20
+xstp = ones(1, 20);
+yimp = filter(num, den, ximp);
+ystp = filter(num, den, xstp);
+subplot(2, 2, 1); plot(theta/pi, mag_H);
+xlabel('Frequency is pi units');
+ylabel('Magnitude');
+subplot(2, 2, 2); plot(theta/pi, angle_H/pi);
+xlabel('Frequency in pi units'); ylabel('Angle in pi units');
+n=0:19;
+subplot(2, 2, 3); plot(n, yimp);
+xlabel('n'); ylabel('Impulse response');
+subplot(2, 2, 4); plot(n,ystp);
+xlabel('n'); ylabel('Step response');

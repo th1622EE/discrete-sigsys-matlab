@@ -1,0 +1,18 @@
+x1n= [1 1 0 1 0 0 0];n1x=0:6;
+x2n= [1 1 0 1 0 0 0];n2x=0:6;
+X1k=fft (x1n); X2k=fft (x2n);
+X1kconj=conj (X1k);
+Rx1x2=X1kconj.*X2k;
+X2kconj=conj (X2k);
+Rx2x1=X1k.*X2kconj;
+rx1x2=ifft (Rx1x2);
+rx2x1=ifft (Rx2x1);
+n=0:6;
+subplot (2,2,1);stem (n1x,x1n);title ('x1(n)');
+xlabel ('n');
+subplot (2,2,2);stem (n2x,x2n);title ('x2(n)');
+xlabel ('n');
+subplot (2,2,3);stem (n,rx1x2);title ('cross-correlation between x1 and x2');
+xlabel ('n');
+subplot (2,2,4);stem (n,rx2x1);title ('cross-correlation between x2 and x1');
+xlabel ('n');

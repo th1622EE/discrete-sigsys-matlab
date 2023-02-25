@@ -1,0 +1,11 @@
+n = -10: 10;
+a = [1 -.3];
+b = [1];
+[x1 n1] = stepsignal(0, -10, 10);
+[x2 n2] = stepsignal(5, -5, 10);
+[x n] = x1plusx2(x1, -x2, n1, n2);
+y = filter(b, a, x);
+subplot (1, 2, 1), stem(n, x); ylabel('input signal');
+xlabel('n');
+subplot (1, 2, 2); stem(n, y); ylabel('output signal');
+xlabel ('n');
